@@ -1,26 +1,19 @@
-print("Welcome to the Maths bowl")
-name = input("Enter your name>> ")
-print("Hi", name)
-age = int(input("Enter your age >> "))
+import random
 
+def rock_paper_scissors(user_choice):
+    valid_choices = ["rock", "paper","scissors"]
+    computer_choice = random.choice(valid_choices)
 
-if age < 14 and age > 2:
-    print("You are eligible for the contest....")
-    option = input("Proceed to the next stage, YES or NO? ")
-    if option.lower() == "yes":
-        print("Let's proceed......")
-        quest = int(input("if x + 2 = 10 then x = "))
-        if quest == 8:
-            print("You're correct!")
-        else:
-            print("You're wrong!")
-    elif option.lower() == "no":
-        print("You have opted out of the competition")
+    if user_choice not in valid_choices:
+       return f"Invalid Choice, please input: 'Rock', 'Paper' or 'Scissors'"
+    if computer_choice == user_choice:
+        return f"I Pick, {computer_choice} \n It's a tie!!"
+    elif (computer_choice == "rock" and user_choice == "paper") or \
+        (computer_choice == "scissors" and user_choice == "rock") or \
+        (computer_choice == "paper" and user_choice =="scissors"):
+        return f"I Pick, {computer_choice} \n You Win!"
     else:
-        print("I don't understand you")
-elif age <= 2:
-    print("You are too young to participate")
-elif age >= 14:
-    print("You are too old to participate")
-else:
-    print("Not Valid!")
+        return f"I Pick, {computer_choice} \n You Lose!"
+    
+user_input = rock_paper_scissors(input("Rock, Paper or scissors? ").lower())
+print(user_input)
